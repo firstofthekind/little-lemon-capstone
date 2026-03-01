@@ -84,6 +84,7 @@ Then open the local preview URL shown in the terminal.
 - `guests` is coerced to number and must be between `1` and `10`
 - `date` must be today or future
 - `time` must be between `17:00` and `22:00`
+- Available booking times are managed in the `Reservation` parent and passed to `BookingForm` as props
 - Submit action is mocked and always returns success after a short delay
 - On success, a confirmation modal appears and the form resets
 

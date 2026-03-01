@@ -2,7 +2,7 @@ import { Restaurant } from "../assets"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { bookingSchema } from "../schema/booking"
-import type { BookingFormData, BookingFormInput } from "../types/types"
+import type { BookingFormData, BookingFormInput, BookingFormProps } from "../types/types"
 import Modal from "./Modal"
 import { CircleCheckBig } from "lucide-react"
 import { useState } from "react"
@@ -13,7 +13,7 @@ const mockReservationRequest = async (data: BookingFormData) => {
   return { status: 200 as const }
 }
 
-const BookingForm = () => {
+const BookingForm = ({ availableTimes, onDateChange }: BookingFormProps) => {
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -104,7 +104,11 @@ const BookingForm = () => {
                 type="date"
                 aria-invalid={Boolean(errors.date)}
                 aria-describedby={errors.date ? "date-error" : undefined}
-                {...register("date")}
+                {...register("date", {
+                  onChange: (event) => {
+                    onDateChange(event.target.value)
+                  },
+                })}
               />
               <p id="date-error" role={errors.date ? "alert" : undefined}>
                 {errors.date?.message}
@@ -112,13 +116,19 @@ const BookingForm = () => {
             </div>
             <div>
               <label htmlFor="time">Choose Time (5:00 - 10:00 PM)</label>
-              <input
+              <select
                 id="time"
-                type="time"
                 aria-invalid={Boolean(errors.time)}
                 aria-describedby={errors.time ? "time-error" : undefined}
                 {...register("time")}
-              />
+              >
+                <option value="">Select a time</option>
+                {availableTimes.map((time) => (
+                  <option key={time} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
               <p id="time-error" role={errors.time ? "alert" : undefined}>
                 {errors.time?.message}
               </p>

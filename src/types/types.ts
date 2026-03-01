@@ -22,6 +22,10 @@ export type TestimonialsCard = {
 
 export type BookingFormInput = z.input<typeof bookingSchema>
 export type BookingFormData = z.output<typeof bookingSchema>
+export type BookingFormProps = {
+  availableTimes: string[]
+  onDateChange: (selectedDate: string) => void
+}
 
 export type ModalProps = {
   children: ReactNode
