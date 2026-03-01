@@ -10,6 +10,7 @@ It includes a marketing homepage, an online reservation form with validation, an
 - Reservation form with `react-hook-form` + `zod` validation
 - Date and time guardrails for booking rules (future date, 5:00 PM to 10:00 PM)
 - Mocked async reservation request that always succeeds for manual UI testing
+- Unit tests for booking form validation and successful submit flow
 - Responsive UI using Bootstrap 5 and custom SCSS theme tokens
 
 ## Tech Stack
@@ -21,6 +22,7 @@ It includes a marketing homepage, an online reservation form with validation, an
 - React Hook Form + Zod
 - Bootstrap 5 + Bootstrap Icons
 - ESLint 9
+- Vitest + React Testing Library
 
 ## Project Structure
 
@@ -65,6 +67,7 @@ Open `http://localhost:5173`.
 - `npm run build` runs TypeScript project build and Vite production build
 - `npm run preview` serves the production build locally
 - `npm run lint` runs ESLint on the project
+- `npm run test` runs unit tests with Vitest
 
 ## Run in Production Mode Locally
 
@@ -97,5 +100,6 @@ Before pushing changes, run:
 
 ```bash
 npm run lint
+npm run test
 npm run build
 ```

@@ -61,42 +61,96 @@ const BookingForm = () => {
           <form onSubmit={handleSubmit(onSubmit)} className="booking_form mx-auto">
             <div>
               <label htmlFor="name">Full Name</label>
-              <input {...register("name")} />
-              <p>{errors.name?.message}</p>
+              <input
+                id="name"
+                aria-invalid={Boolean(errors.name)}
+                aria-describedby={errors.name ? "name-error" : undefined}
+                {...register("name")}
+              />
+              <p id="name-error" role={errors.name ? "alert" : undefined}>
+                {errors.name?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="email">Email</label>
-              <input type="email" {...register("email")} />
-              <p>{errors.email?.message}</p>
+              <input
+                id="email"
+                type="email"
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                {...register("email")}
+              />
+              <p id="email-error" role={errors.email ? "alert" : undefined}>
+                {errors.email?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="number">Phone Number</label>
-              <input type="tel" {...register("number")} />
-              <p>{errors.number?.message}</p>
+              <input
+                id="number"
+                type="tel"
+                aria-invalid={Boolean(errors.number)}
+                aria-describedby={errors.number ? "number-error" : undefined}
+                {...register("number")}
+              />
+              <p id="number-error" role={errors.number ? "alert" : undefined}>
+                {errors.number?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="date">Choose Date</label>
-              <input type="date" {...register("date")} />
-              <p>{errors.date?.message}</p>
+              <input
+                id="date"
+                type="date"
+                aria-invalid={Boolean(errors.date)}
+                aria-describedby={errors.date ? "date-error" : undefined}
+                {...register("date")}
+              />
+              <p id="date-error" role={errors.date ? "alert" : undefined}>
+                {errors.date?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="time">Choose Time (5:00 - 10:00 PM)</label>
-              <input type="time" {...register("time")} />
-              <p>{errors.time?.message}</p>
+              <input
+                id="time"
+                type="time"
+                aria-invalid={Boolean(errors.time)}
+                aria-describedby={errors.time ? "time-error" : undefined}
+                {...register("time")}
+              />
+              <p id="time-error" role={errors.time ? "alert" : undefined}>
+                {errors.time?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="guests">Number of Guests</label>
-              <input type="number" {...register("guests")} />
-              <p>{errors.guests?.message}</p>
+              <input
+                id="guests"
+                type="number"
+                aria-invalid={Boolean(errors.guests)}
+                aria-describedby={errors.guests ? "guests-error" : undefined}
+                {...register("guests")}
+              />
+              <p id="guests-error" role={errors.guests ? "alert" : undefined}>
+                {errors.guests?.message}
+              </p>
             </div>
             <div>
               <label htmlFor="occasion">Occasion</label>
-              <select {...register("occasion")}>
+              <select
+                id="occasion"
+                aria-invalid={Boolean(errors.occasion)}
+                aria-describedby={errors.occasion ? "occasion-error" : undefined}
+                {...register("occasion")}
+              >
                 <option value="">Select an Occasion</option>
                 <option value="birthday">Birthday</option>
                 <option value="anniversary">Anniversary</option>
               </select>
-              <p>{errors.occasion?.message}</p>
+              <p id="occasion-error" role={errors.occasion ? "alert" : undefined}>
+                {errors.occasion?.message}
+              </p>
             </div>
             <div className="align-items-center mt-4">
               <button
@@ -132,7 +186,9 @@ const BookingForm = () => {
           <div className="mb-3 text-primary">
             <CircleCheckBig size={80} />
           </div>
-          <h5 className="modal-title mb-1 fw-bold">Reservation Confirmed!</h5>
+          <h5 id="reservation-modal-title" className="modal-title mb-1 fw-bold">
+            Reservation Confirmed!
+          </h5>
           <p>Your reservation has been confirmed. Check your email for details.</p>
         </Modal>
       )}

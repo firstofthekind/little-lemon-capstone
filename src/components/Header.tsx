@@ -12,57 +12,66 @@ const Header = () => {
       <div>
         <img src={LogoHeader} alt="logo" width={220} loading="lazy" />
       </div>
-      {openMenu ? (
-        <ul className="d-none d-lg-flex justify-content-evenly gap-4 fs-5 fw-semibold">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#menu">Menu</a>
-          </li>
-          <li>
-            <Link to="/reservation">Reservation</Link>
-          </li>
-          <li>
-            <Link to="/order-online">Order Online</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      ) : (
-        <ul className="d-flex flex-column gap-3 d-lg-none shadow-lg p-4 menubar_position ">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#menu">Menu</a>
-          </li>
-          <li>
-            <Link to="/reservation">Reservation</Link>
-          </li>
-          <li>
-            <Link to="/order-online" className="text-nowrap">
-              Order Online
-            </Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      )}
-      <div
+      <nav aria-label="Primary navigation">
+        {openMenu ? (
+          <ul className="d-none d-lg-flex justify-content-evenly gap-4 fs-5 fw-semibold">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#menu">Menu</a>
+            </li>
+            <li>
+              <Link to="/reservation">Reservation</Link>
+            </li>
+            <li>
+              <Link to="/order-online">Order Online</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        ) : (
+          <ul
+            id="mobile-navigation"
+            className="d-flex flex-column gap-3 d-lg-none shadow-lg p-4 menubar_position "
+          >
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#menu">Menu</a>
+            </li>
+            <li>
+              <Link to="/reservation">Reservation</Link>
+            </li>
+            <li>
+              <Link to="/order-online" className="text-nowrap">
+                Order Online
+              </Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        )}
+      </nav>
+      <button
+        type="button"
         onClick={toggleMenu}
+        aria-controls="mobile-navigation"
+        aria-expanded={!openMenu}
+        aria-label={openMenu ? "Open navigation menu" : "Close navigation menu"}
         className="position-absolute top-1 end-0 translate-middle-x d-block d-lg-none"
       >
         {openMenu ? <AlignRight /> : <X />}
-      </div>
+      </button>
     </header>
   )
 }
